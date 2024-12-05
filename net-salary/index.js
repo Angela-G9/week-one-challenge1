@@ -1,14 +1,7 @@
-document.getElementById('salaryForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    // Get input values
-    const basicSalary = parseFloat(document.getElementById('basicSalary').value);
-    const benefits = parseFloat(document.getElementById('benefits').value);
-
-    // Check if inputs are valid numbers
-    if (isNaN(basicSalary) || isNaN(benefits)) {
-        alert('Please enter valid numbers for both Basic Salary and Benefits.');
-        return;
+function calculateSalary(basicSalary, benefits) {
+    // Check if inputs are valid numbers and not empty
+    if (isNaN(basicSalary) || isNaN(benefits) || basicSalary <= 0 || benefits < 0) {
+        throw new Error('Please enter valid positive numbers for both Basic Salary and Benefits.');
     }
 
     // 1. Calculate Gross Salary
@@ -47,13 +40,25 @@ document.getElementById('salaryForm').addEventListener('submit', function(e) {
     // Format numbers with commas for readability
     const formatCurrency = (amount) => amount.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-    // Display results on the page
-    document.getElementById('grossSalary').textContent = formatCurrency(grossSalary);
-    document.getElementById('kraTax').textContent = formatCurrency(tax);
-    document.getElementById('nhifDeduction').textContent = formatCurrency(nhifDeduction);
-    document.getElementById('nssfDeduction').textContent = formatCurrency(nssfDeduction);
-    document.getElementById('netSalary').textContent = formatCurrency(netSalary);
+    // Return the results as an object
+    return {
+        grossSalary: formatCurrency(grossSalary),
+        tax: formatCurrency(tax),
+        nhifDeduction: formatCurrency(nhifDeduction),
+        nssfDeduction: formatCurrency(nssfDeduction),
+        netSalary: formatCurrency(netSalary)
+    };
+}
+// Example variables
+let basicSalary = 50000;  // Define basicSalary
+let benefits = 10000;     // Define benefits
 
-    // Show the result section
-    document.getElementById('results').style.display = 'block';
-});
+// Function to calculate salary
+function calculateSalary(basicSalary, benefits) {
+  return basicSalary + benefits;
+}
+
+// Call the function and log the result
+console.log(calculateSalary(basicSalary, benefits));  // Should work now
+
+console.log (calculateSalary(basicSalary,benefits))

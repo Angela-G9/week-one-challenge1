@@ -1,25 +1,21 @@
-function studentGrade(score ) {
-
-    let prompt =require( 'prompt-sync')()
-    let score = prompt( 'Enter the student marks(0-100)');
-    score = Number(score);
-    // Check if input is valid
-    if (score >= 0 && score <= 100) {
-        if (score > 79) {
-            console.log('Grade: A');
-        } else if (score >= 60) {
-            console.log('Grade: B');
-        } else if (score >= 50) {
-            console.log('Grade: C');
-        } else if (score >= 40) {
-            console.log('Grade: D');
-        } else {
-            console.log('Grade: E');
-        }
-    } else {
-        console.log('Please enter a valid score between 0 and 100.');
+function studentGrade(Number){
+// Convert the input to a number
+//score = Number(score);
+// Check if input is valid
+if (Number >= 0 && Number <= 100) {
+    if (Number > 79) {
+        return('Grade: A');
+    } else if (Number >= 60 && Number>= 78) {
+        return('Grade: B');
+    } else if (Number>= 50 && Number>= 59) {
+        return('Grade: C');
+    } else if (Number>= 40 &&Number >= 49) {
+        return('Grade: D');
+    } else if (Number<40 && Number>= 0)
+        return('Grade: E');
     }
-
-
+    else {
+    console.log('Invalid score. Please enter a value between 0 and 100.');
 }
-
+}
+console.log(studentGrade(10))
