@@ -1,10 +1,8 @@
-function checkSpeed() {
-    const speed = document.getElementById("speed").value;
-    const result = document.getElementById("result");
+function checkSpeed(speed) {
 
     if (speed === "") {
-        result.textContent = "Please enter a speed.";
-        return;
+        return "Please enter a speed.";
+        
     }
 
     const speedLimit = 70;
@@ -14,14 +12,15 @@ function checkSpeed() {
     let demeritPoints = 0;
 
     if (speed <= speedLimit) {
-        result.textContent = "Ok";
+        return "Ok";
     } else {
         demeritPoints = Math.floor((speed - speedLimit) / pointsPerExceed);
 
         if (demeritPoints > maxPoints) {
-            result.textContent = "License suspended";
+            return  "License suspended";
         } else {
-            result.textContent = `Points: ${demeritPoints}`;
+            return `Points: ${demeritPoints}`;
         }
     }
 }
+console.log(checkSpeed(250))

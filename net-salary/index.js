@@ -8,7 +8,7 @@ function calculateSalary(basicSalary, benefits) {
     const grossSalary = basicSalary + benefits;
 
     // 2. Calculate Tax (PAYE) based on progressive rates
-    let tax = 0;
+    let tax = 0; 
     if (grossSalary <= 24000) {
         tax = grossSalary * 0.1; // 10% tax on up to 24,000
     } else if (grossSalary <= 40000) {
@@ -49,16 +49,13 @@ function calculateSalary(basicSalary, benefits) {
         netSalary: formatCurrency(netSalary)
     };
 }
+
 // Example variables
 let basicSalary = 50000;  // Define basicSalary
 let benefits = 10000;     // Define benefits
 
-// Function to calculate salary
-function calculateSalary(basicSalary, benefits) {
-  return basicSalary + benefits;
-}
-
 // Call the function and log the result
-console.log(calculateSalary(basicSalary, benefits));  // Should work now
+const salaryDetails = calculateSalary(basicSalary, benefits);
+console.log(salaryDetails); // It will display all the salary details including gross, tax, NHIF, NSSF, and net salary
 
-console.log (calculateSalary(basicSalary,benefits))
+console.log(60000)
